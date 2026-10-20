@@ -262,7 +262,9 @@ const start = async () => {
     throw new Error("DATABASE_URL and SECRET_ACCESS_KEY must be configured");
   }
   await mongoose.connect(process.env.DATABASE_URL, { autoIndex: true });
-  app.listen(PORT, () => console.log(`Banking API listening on port ${PORT}`));
+  app.listen(Number(process.env.PORT) || 3000, "0.0.0.0", () => {
+  console.log("Banking API started");
+});
 };
 
 start().catch((error) => {
