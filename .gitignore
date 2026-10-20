@@ -1,0 +1,5 @@
+.env
+node_modules
+payment-platform-a263a-firebase-adminsdk-ih8uo-a1b34570ee.json
+*.log
+.DS_Store

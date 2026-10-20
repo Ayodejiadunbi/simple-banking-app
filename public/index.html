@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NovaBank Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">Nova<span>Bank</span></a>
+    <button id="logout" class="button ghost hidden">Log out</button>
+  </header>
+
+  <main>
+    <section id="auth-view" class="auth-layout">
+      <div class="hero">
+        <p class="eyebrow">A secure banking portfolio project</p>
+        <h1>Simple money management, built with care.</h1>
+        <p>Create demo accounts, move funds instantly and follow every transaction in one clear dashboard.</p>
+        <div class="trust-row"><span>JWT authentication</span><span>Atomic transfers</span><span>Integer currency</span></div>
+      </div>
+      <div class="auth-card">
+        <div class="tabs">
+          <button class="tab active" data-mode="signin">Sign in</button>
+          <button class="tab" data-mode="signup">Create account</button>
+        </div>
+        <form id="auth-form">
+          <label id="name-field" class="hidden">Full name<input name="fullname" autocomplete="name"></label>
+          <label>Email<input name="email" type="email" autocomplete="email" required></label>
+          <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+          <button class="button primary wide" type="submit">Sign in</button>
+        </form>
+        <p id="auth-message" class="message"></p>
+      </div>
+    </section>
+
+    <section id="dashboard" class="dashboard hidden">
+      <div class="welcome"><div><p class="eyebrow">Overview</p><h1>Welcome, <span id="first-name"></span></h1></div><p id="account-number"></p></div>
+      <div class="balance-card"><p>Available balance</p><h2 id="balance">£0.00</h2><small>Demo funds only</small></div>
+      <div class="action-grid">
+        <form class="panel money-form" data-action="deposit"><h3>Add funds</h3><label>Amount (£)<input name="amount" type="number" min="0.01" step="0.01" required></label><label>Reference<input name="reference" maxlength="100" placeholder="Optional"></label><button class="button primary" type="submit">Deposit</button></form>
+        <form class="panel money-form" data-action="withdraw"><h3>Withdraw</h3><label>Amount (£)<input name="amount" type="number" min="0.01" step="0.01" required></label><label>Reference<input name="reference" maxlength="100" placeholder="Optional"></label><button class="button secondary" type="submit">Withdraw</button></form>
+        <form class="panel money-form" data-action="transfer"><h3>Send money</h3><label>Recipient account<input name="recipientAccountNumber" inputmode="numeric" minlength="8" maxlength="8" required></label><label>Amount (£)<input name="amount" type="number" min="0.01" step="0.01" required></label><label>Reference<input name="reference" maxlength="100" placeholder="Optional"></label><button class="button primary" type="submit">Transfer</button></form>
+      </div>
+      <p id="dashboard-message" class="message"></p>
+      <section class="panel transactions"><div class="section-heading"><h3>Recent activity</h3><button id="refresh" class="text-button">Refresh</button></div><div id="transaction-list"></div></section>
+    </section>
+  </main>
+  <script src="app.js" defer></script>
+</body>
+</html>

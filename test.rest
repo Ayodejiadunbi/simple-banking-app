@@ -1,0 +1,53 @@
+@baseUrl = http://localhost:3000
+@token = paste-access-token-here
+
+### Health
+GET {{baseUrl}}/health
+
+### Register
+POST {{baseUrl}}/signup
+Content-Type: application/json
+
+{
+  "fullname": "Test Customer",
+  "email": "customer@example.com",
+  "password": "Secure123"
+}
+
+### Sign in
+POST {{baseUrl}}/signin
+Content-Type: application/json
+
+{
+  "email": "customer@example.com",
+  "password": "Secure123"
+}
+
+### View account
+GET {{baseUrl}}/account
+Authorization: Bearer {{token}}
+
+### Deposit demonstration funds
+POST {{baseUrl}}/account/deposit
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "amount": 100.00, "reference": "Demo deposit" }
+
+### Withdraw
+POST {{baseUrl}}/account/withdraw
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "amount": 20.00, "reference": "Demo withdrawal" }
+
+### Transfer
+POST {{baseUrl}}/account/transfer
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "recipientAccountNumber": "12345678", "amount": 15.50, "reference": "Lunch" }
+
+### Transaction history
+GET {{baseUrl}}/transactions?limit=20
+Authorization: Bearer {{token}}
